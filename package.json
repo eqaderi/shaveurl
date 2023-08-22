@@ -2,9 +2,11 @@
   "name": "shrinkly",
   "version": "1.0.0",
   "description": "A versatile and user-friendly npm package designed to instantly shorten URLs using multiple popular free URL shortening services, simplifying link sharing with one quick command.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -27,5 +29,12 @@
   "bugs": {
     "url": "https://github.com/eqaderi/shrinkly/issues"
   },
-  "homepage": "https://github.com/eqaderi/shrinkly#readme"
+  "homepage": "https://github.com/eqaderi/shrinkly#readme",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
 }
