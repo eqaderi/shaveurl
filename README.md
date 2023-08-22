@@ -1,7 +1,7 @@
 ## Example Usage
 
 ```typescript
-shortenUrl('https://en.wikipedia.org/wiki/List_of_HTTP_status_codes', '1pt')
+shortenUrl('https://en.wikipedia.org/wiki/List_of_HTTP_status_codes', 'isgd')
   .then((shortUrl) => {
     console.log("Shortened URL:", shortUrl);
   })

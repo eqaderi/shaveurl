@@ -67,20 +67,69 @@ async function shortenWithCleanUri(url: string): Promise<string> {
   }
 }
 
-type ShorteningService = "1pt" | "cleanuri"; // Extend this as needed
+type IsGdResponse = {
+  shorturl?: string;
+  errorcode?: number;
+  errormessage?: string;
+};
+type IsgdParams = {
+  url: string;
+  format: "json" | "xml" | "simple" | "web";
+  shorturl?: string;
+  logstats?: 1;
+};
+
+async function shortenUrlWithIsgd(
+  url: string,
+  customShort?: string,
+  format: IsgdParams["format"] = "json",
+  logstats?: boolean
+) {
+  const apiURL = "https://is.gd/create.php";
+  const params: IsgdParams = {
+    url,
+    format,
+  };
+
+  if (customShort) {
+    params.shorturl = customShort;
+  }
+
+  if (logstats) {
+    params.logstats = 1;
+  }
+
+  try {
+    const response = await axios.get<IsGdResponse>(apiURL, { params });
+    if (response.data.shorturl) {
+      return response.data.shorturl;
+    } else {
+      throw new Error(
+        response.data.errormessage || "Failed to shorten URL with IsGd"
+      );
+    }
+  } catch (error) {
+    return `Error: ${(error as Error).message}`;
+  }
+}
+
+type ShorteningService = "1pt" | "cleanuri" | "isgd";
 type ShorteningFunction = (
   url: string,
-  customShort?: string
+  customShort?: string,
+  format?: IsgdParams["format"],
+  logstats?: boolean
 ) => Promise<string>;
 
 const shortenWithService: Record<ShorteningService, ShorteningFunction> = {
   "1pt": shortenWith1pt,
   cleanuri: shortenWithCleanUri,
+  isgd: shortenUrlWithIsgd,
 };
 
 export async function shortenUrl(
   url: string,
-  service: ShorteningService = '1pt',
+  service: ShorteningService = "isgd",
   customShort?: string
 ): Promise<string> {
   const shortenFunction = shortenWithService[service];
