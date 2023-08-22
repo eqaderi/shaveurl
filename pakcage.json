@@ -1,0 +1,31 @@
+{
+  "name": "shrinkly",
+  "version": "1.0.0",
+  "description": "A versatile and user-friendly npm package designed to instantly shorten URLs using multiple popular free URL shortening services, simplifying link sharing with one quick command.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eqaderi/shrinkly.git"
+  },
+  "keywords": [
+    "url",
+    "shortener",
+    "link",
+    "tinyurl",
+    "bitly",
+    "shortlink",
+    "compress",
+    "minify",
+    "shrink",
+    "web"
+  ],
+  "author": "Ershad Qaderi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eqaderi/shrinkly/issues"
+  },
+  "homepage": "https://github.com/eqaderi/shrinkly#readme"
+}
