@@ -3,7 +3,7 @@ import { shortenWithCleanUri } from './shorteningServices/cleanuri'
 import { shortenWithIsgd, IsgdParamsType } from './shorteningServices/isgd'
 import {shortenWithShrtcode } from './shorteningServices/shrtcode'
 
-type ShorteningService = "1pt" | "cleanuri" | "isgd" | "shrtcode";
+export type ShorteningService = "1pt" | "cleanuri" | "isgd" | "shrtcode";
 type ShorteningFunction = (
   url: string,
   customShort?: string,
