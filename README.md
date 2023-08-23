@@ -1,5 +1,5 @@
-<div align="center">
-  <img src="assets/logo.PNG" alt="Shrinkly Logo" width="200" style="margin-bottom: 20px;"/>
+<div align="center" style="margin-top: 20px; margin-bottom: 20px;">
+  <img src="assets/logo.PNG" alt="Shrinkly Logo" width="200" style="border-radius: 25px; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); " />
 </div>
 
 # Shrinkly: URL Shortener Services
