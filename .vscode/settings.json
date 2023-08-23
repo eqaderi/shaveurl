@@ -3,6 +3,7 @@
         "cleanuri",
         "errormessage",
         "logstats",
-        "shorturl"
+        "shorturl",
+        "Shrtcode"
     ]
 }
