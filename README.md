@@ -1,15 +1,17 @@
 # Shrinkly: URL Shortener Services
 
-Shrinkly is an npm package that provides easy integration with four URL shortener services that don't require API access tokens. You can easily shorten URLs using CleanUri, IsGd, 1pt, or shrtcode.
+Shrinkly is an npm package that provides easy integration with four URL shortener services that don't require API access tokens. You can easily shorten URLs using CleanUri, IsGd, 1pt, or shrtcode. Additionally, Shrinkly comes with a command-line interface, enabling users to shorten URLs directly from the command line.
 
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
 2. [Services Included](#services-included)
 3. [Usage](#usage)
+   - [Library Usage](#library-usage)
+   - [Command Line Usage](#command-line-usage)
 4. [Custom Shortlink](#custom-shortlink)
-6. [Contribution](#contribution)
-7. [License](#license)
+5. [Contribution](#contribution)
+6. [License](#license)
 
 ## Getting Started
 
@@ -22,8 +24,8 @@ npm install shrinkly
 
 yarn:
 ```bash
-yarn add shirnkly
-````
+yarn add shrinkly
+```
 
 pnpm:
 ```bash
@@ -39,26 +41,42 @@ pnpm install shrinkly
 
 ## Usage
 
-Import the `shortenUrl` function from the package and specify one of the four shortening services.
+### Library Usage
 
-### Example
+Import the \`shortenUrl\` function from the package and specify one of the four shortening services.
+
+#### Example
 
 ```typescript
 import { shortenUrl } from 'shrinkly';
 
-const longUrl = "https://example.com/long-url";
+const longUrl = "https://en.wikipedia.org/wiki/List_of_HTTP_status_codes";
 shortenUrl(longUrl, "cleanuri").then(shortUrl => console.log(shortUrl));
 ```
 
-longUrl can be one of these values: `1pt` | `cleanuri` | `isgd` | `shrtcode`;
+### Command Line Usage
+
+After installing Shrinkly, you can shorten URLs directly from the command line:
+
+```bash
+shrinkly 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes' cleanuri
+```
+
+For help with command line options, run:
+
+```bash
+shrinkly --help
+```
 
 ## Custom Shortlink
 
-Specify a custom shortlink with CleanUri or 1pt:
+Specify a custom shortlink with isgd or 1pt:
 
 ```typescript
-const customShort = "mylink";
-shortenUrl(longUrl, "cleanuri", customShort).then(shortUrl => console.log(shortUrl));
+const customShort = 'myshrinklink';
+const url = 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes';
+
+shortenUrl(longUrl, "isgd", customShort).then(shortUrl => console.log(shortUrl));
 ```
 
 ## Contribution
@@ -68,4 +86,3 @@ Feel free to contribute to the [Shrinkly GitHub repository](https://github.com/e
 ## License
 
 Shrinkly is licensed under the MIT License - see the [LICENSE](https://github.com/eqaderi/shrinkly/blob/main/LICENSE) file for details.
-
