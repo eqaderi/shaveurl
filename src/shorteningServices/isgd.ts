@@ -1,5 +1,9 @@
 import axios, { type AxiosResponse } from "axios";
-import { handleError } from "../handleError";
+import { wrapWithTryCatch } from "../tryCatchWrapper";
+
+export const shortenWithIsgd = wrapWithTryCatch("isgd", shortenUrlWithIsgd);
+
+const apiURL = "https://is.gd/create.php";
 
 type IsGdResponseType = {
   shorturl?: string;
@@ -13,13 +17,12 @@ export type IsgdParamsType = {
   logstats?: 1;
 };
 
-export async function shortenUrlWithIsgd(
+async function shortenUrlWithIsgd(
   url: string,
   customShort?: string,
   format: IsgdParamsType["format"] = "json",
   logstats?: boolean
 ): Promise<string> {
-  const apiURL = "https://is.gd/create.php";
   const params: IsgdParamsType = {
     url,
     format,
@@ -33,18 +36,14 @@ export async function shortenUrlWithIsgd(
     params.logstats = 1;
   }
 
-  try {
-    const response: AxiosResponse<IsGdResponseType> =
-      await axios.get<IsGdResponseType>(apiURL, { params });
+  const response: AxiosResponse<IsGdResponseType> =
+    await axios.get<IsGdResponseType>(apiURL, { params });
 
-    if (response.data.shorturl) {
-      return response.data.shorturl;
-    } else {
-      throw new Error(
-        response.data.errormessage || "Failed to shorten URL with IsGd"
-      );
-    }
-  } catch (error) {
-    handleError("IsGd", error);
+  if (response.data.shorturl) {
+    return response.data.shorturl;
+  } else {
+    throw new Error(
+      response.data.errormessage || "Failed to shorten URL with IsGd"
+    );
   }
 }

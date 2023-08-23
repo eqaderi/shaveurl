@@ -1,6 +1,6 @@
 import { shortenWith1pt } from './shorteningServices/one-pt'
-import { shortenWithCleanUri } from './shorteningServices/clean-uri'
-import { shortenUrlWithIsgd, IsgdParamsType } from './shorteningServices/isgd'
+import { shortenWithCleanUri } from './shorteningServices/cleanuri'
+import { shortenWithIsgd, IsgdParamsType } from './shorteningServices/isgd'
 
 type ShorteningService = "1pt" | "cleanuri" | "isgd";
 type ShorteningFunction = (
@@ -13,7 +13,7 @@ type ShorteningFunction = (
 const shortenWithService: Record<ShorteningService, ShorteningFunction> = {
   "1pt": shortenWith1pt,
   cleanuri: shortenWithCleanUri,
-  isgd: shortenUrlWithIsgd,
+  isgd: shortenWithIsgd,
 };
 
 export async function shortenUrl(

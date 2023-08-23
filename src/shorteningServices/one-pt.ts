@@ -1,5 +1,9 @@
 import axios, { type AxiosResponse } from "axios";
-import { handleError } from "../handleError";
+import { wrapWithTryCatch } from "../tryCatchWrapper";
+
+export const shortenWith1pt = wrapWithTryCatch("1pt", shortenUrlWith1pt);
+
+const apiUrl = "https://csclub.uwaterloo.ca/~phthakka/1pt-express/addURL";
 
 type onePtResponseType = {
   message: string;
@@ -12,13 +16,10 @@ type ParamsTypeFor1pt = {
   short?: string;
 };
 
-export async function shortenWith1pt(
+async function shortenUrlWith1pt(
   url: string,
   customShort?: string
 ): Promise<string> {
-  const shorteningEndpoint =
-    "https://csclub.uwaterloo.ca/~phthakka/1pt-express/addURL";
-
   const params: ParamsTypeFor1pt = {
     long: url,
   };
@@ -27,20 +28,16 @@ export async function shortenWith1pt(
     params.short = customShort;
   }
 
-  try {
-    const response: AxiosResponse<onePtResponseType> =
-      await axios.post<onePtResponseType>(
-        shorteningEndpoint,
-        null,
-        { params } // Pass params as query parameters
-      );
+  const response: AxiosResponse<onePtResponseType> =
+    await axios.post<onePtResponseType>(
+      apiUrl,
+      null,
+      { params } // Pass params as query parameters
+    );
 
-    if (response.data && response.data.short) {
-      return `https://1pt.co/${response.data.short}`;
-    }
-
-    throw new Error("Failed to shorten URL with 1pt");
-  } catch (error) {
-    handleError("1pt", error);
+  if (response.data && response.data.short) {
+    return `https://1pt.co/${response.data.short}`;
   }
+
+  throw new Error("Failed to shorten URL with 1pt");
 }
