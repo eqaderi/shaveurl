@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="assets/logo.PNG" alt="Shrinkly Logo" width="200" style="margin-bottom: 20px;"/>
+</div>
+
 # Shrinkly: URL Shortener Services
 
 Shrinkly is an npm package that provides easy integration with four URL shortener services that don't require API access tokens. You can easily shorten URLs using CleanUri, IsGd, 1pt, or shrtcode. Additionally, Shrinkly comes with a command-line interface, enabling users to shorten URLs directly from the command line.
