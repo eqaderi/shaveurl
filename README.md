@@ -1,5 +1,5 @@
-<div align="center" style="margin-top: 20px; margin-bottom: 20px;">
-  <img src="assets/logo.PNG" alt="Shrinkly Logo" width="200" style="border-radius: 25px; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); " />
+<div align="center">
+  <img src="assets/logo.PNG" alt="Shrinkly Logo" width="200" style="border-radius: 25px; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);" />
 </div>
 
 # Shrinkly: URL Shortener Services
@@ -20,6 +20,8 @@ Shrinkly is an npm package that provides easy integration with four URL shortene
 ## Getting Started
 
 ### Installation
+
+You can install Shrinkly locally for use in your project:
 
 npm:
 ```bash
@@ -47,7 +49,7 @@ pnpm install shrinkly
 
 ### Library Usage
 
-Import the \`shortenUrl\` function from the package and specify one of the four shortening services.
+Import the \`shortenUrl\` function from the package and specify one of the four shortening services: `cleanuri`, `isgd`, `1pt`, or `shrtcode`. If no service is specified, the default service is `isgd`.
 
 #### Example
 
@@ -55,12 +57,38 @@ Import the \`shortenUrl\` function from the package and specify one of the four 
 import { shortenUrl } from 'shrinkly';
 
 const longUrl = "https://en.wikipedia.org/wiki/List_of_HTTP_status_codes";
+shortenUrl(longUrl).then(shortUrl => console.log(shortUrl));
+```
+
+with custom service:
+
+```typescript
+import { shortenUrl } from 'shrinkly';
+const longUrl = "https://en.wikipedia.org/wiki/List_of_HTTP_status_codes";
 shortenUrl(longUrl, "cleanuri").then(shortUrl => console.log(shortUrl));
 ```
 
 ### Command Line Usage
 
-After installing Shrinkly, you can shorten URLs directly from the command line:
+You can use Shrinkly directly from the command line using npx:
+
+```bash
+npx shrinkly 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes'
+```
+
+Alternatively, you can install Shrinkly globally for faster command line usage:
+
+```bash
+npm install -g shrinkly
+```
+
+#### Example with default service:
+
+```bash
+shrinkly 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes'
+```
+
+#### Example with specified service:
 
 ```bash
 shrinkly 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes' cleanuri
