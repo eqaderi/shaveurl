@@ -1,12 +1,12 @@
 import axios, { AxiosResponse } from "axios";
 
-type ShortenResponse = {
+type ResponseTypeFor1pt = {
   message: string;
   short: string;
   long: string;
 };
 
-type ShortenParams = {
+type ParamsTypeFor1pt = {
   long: string;
   short?: string;
 };
@@ -18,7 +18,7 @@ async function shortenWith1pt(
   const shorteningEndpoint =
     "https://csclub.uwaterloo.ca/~phthakka/1pt-express/addURL";
 
-  const params: ShortenParams = {
+  const params: ParamsTypeFor1pt = {
     long: url,
   };
 
@@ -27,8 +27,8 @@ async function shortenWith1pt(
   }
 
   try {
-    const response: AxiosResponse<ShortenResponse> =
-      await axios.post<ShortenResponse>(
+    const response: AxiosResponse<ResponseTypeFor1pt> =
+      await axios.post<ResponseTypeFor1pt>(
         shorteningEndpoint,
         null,
         { params } // Pass params as query parameters
@@ -45,13 +45,19 @@ async function shortenWith1pt(
   }
 }
 
+type CleanUriResponseType = {
+  result_url: string;
+};
+
 async function shortenWithCleanUri(url: string): Promise<string> {
   const cleanUriEndpoint = "https://cleanuri.com/api/v1/shorten";
 
   try {
-    const response: AxiosResponse<{ result_url: string }> = await axios.post<{
-      result_url: string;
-    }>(cleanUriEndpoint, `url=${encodeURIComponent(url)}`);
+    const response: AxiosResponse<CleanUriResponseType> =
+      await axios.post<CleanUriResponseType>(
+        cleanUriEndpoint,
+        `url=${encodeURIComponent(url)}`
+      );
 
     if (response.data && response.data.result_url) {
       return response.data.result_url;
@@ -67,12 +73,12 @@ async function shortenWithCleanUri(url: string): Promise<string> {
   }
 }
 
-type IsGdResponse = {
+type IsGdResponseType = {
   shorturl?: string;
   errorcode?: number;
   errormessage?: string;
 };
-type IsgdParams = {
+type IsgdParamsType = {
   url: string;
   format: "json" | "xml" | "simple" | "web";
   shorturl?: string;
@@ -82,11 +88,11 @@ type IsgdParams = {
 async function shortenUrlWithIsgd(
   url: string,
   customShort?: string,
-  format: IsgdParams["format"] = "json",
+  format: IsgdParamsType["format"] = "json",
   logstats?: boolean
 ) {
   const apiURL = "https://is.gd/create.php";
-  const params: IsgdParams = {
+  const params: IsgdParamsType = {
     url,
     format,
   };
@@ -100,7 +106,7 @@ async function shortenUrlWithIsgd(
   }
 
   try {
-    const response = await axios.get<IsGdResponse>(apiURL, { params });
+    const response = await axios.get<IsGdResponseType>(apiURL, { params });
     if (response.data.shorturl) {
       return response.data.shorturl;
     } else {
@@ -117,7 +123,7 @@ type ShorteningService = "1pt" | "cleanuri" | "isgd";
 type ShorteningFunction = (
   url: string,
   customShort?: string,
-  format?: IsgdParams["format"],
+  format?: IsgdParamsType["format"],
   logstats?: boolean
 ) => Promise<string>;
 
