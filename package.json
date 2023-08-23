@@ -1,6 +1,6 @@
 {
   "name": "shrinkly",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A versatile and user-friendly npm package designed to instantly shorten URLs using multiple popular free URL shortening services, simplifying link sharing with one quick command.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,13 +16,16 @@
     "url",
     "shortener",
     "link",
-    "tinyurl",
-    "bitly",
     "shortlink",
     "compress",
     "minify",
     "shrink",
-    "web"
+    "tinyurl",
+    "bitly",
+    "1pt",
+    "cleanuri",
+    "isgd",
+    "shrtcode"
   ],
   "author": "Ershad Qaderi",
   "license": "MIT",
