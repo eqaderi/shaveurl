@@ -1,10 +1,10 @@
 <div align="center">
-  <img src="assets/logo.PNG" alt="Shrinkly Logo" width="200" style="border-radius: 25px; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);" />
+  <img src="assets/logo.PNG" alt="shaveurl Logo" width="200" style="border-radius: 25px; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);" />
 </div>
 
-# Shrinkly: URL Shortener Services
+# shaveurl: URL Shortener Services
 
-Shrinkly is an npm package that provides easy integration with four URL shortener services that don't require API access tokens. You can easily shorten URLs using CleanUri, IsGd, 1pt, or shrtcode. Additionally, Shrinkly comes with a command-line interface, enabling users to shorten URLs directly from the command line.
+shaveurl is an npm package that provides easy integration with four URL shortener services that don't require API access tokens. You can easily shorten URLs using CleanUri, IsGd, 1pt, or shrtcode. Additionally, shaveurl comes with a command-line interface, enabling users to shorten URLs directly from the command line.
 
 ## Table of Contents
 
@@ -21,21 +21,21 @@ Shrinkly is an npm package that provides easy integration with four URL shortene
 
 ### Installation
 
-You can install Shrinkly locally for use in your project:
+You can install shaveurl locally for use in your project:
 
 npm:
 ```bash
-npm install shrinkly
+npm install shaveurl
 ```
 
 yarn:
 ```bash
-yarn add shrinkly
+yarn add shaveurl
 ```
 
 pnpm:
 ```bash
-pnpm install shrinkly
+pnpm install shaveurl
 ```
 
 ## Services Included
@@ -54,7 +54,7 @@ Import the \`shortenUrl\` function from the package and specify one of the four 
 #### Example
 
 ```typescript
-import { shortenUrl } from 'shrinkly';
+import { shortenUrl } from 'shaveurl';
 
 const longUrl = "https://en.wikipedia.org/wiki/List_of_HTTP_status_codes";
 shortenUrl(longUrl).then(shortUrl => console.log(shortUrl));
@@ -63,41 +63,41 @@ shortenUrl(longUrl).then(shortUrl => console.log(shortUrl));
 with custom service:
 
 ```typescript
-import { shortenUrl } from 'shrinkly';
+import { shortenUrl } from 'shaveurl';
 const longUrl = "https://en.wikipedia.org/wiki/List_of_HTTP_status_codes";
 shortenUrl(longUrl, "cleanuri").then(shortUrl => console.log(shortUrl));
 ```
 
 ### Command Line Usage
 
-You can use Shrinkly directly from the command line using npx:
+You can use shaveurl directly from the command line using npx:
 
 ```bash
-npx shrinkly 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes'
+npx shaveurl 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes'
 ```
 
-Alternatively, you can install Shrinkly globally for faster command line usage:
+Alternatively, you can install shaveurl globally for faster command line usage:
 
 ```bash
-npm install -g shrinkly
+npm install -g shaveurl
 ```
 
 #### Example with default service:
 
 ```bash
-shrinkly 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes'
+shaveurl 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes'
 ```
 
 #### Example with specified service:
 
 ```bash
-shrinkly 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes' cleanuri
+shaveurl 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes' cleanuri
 ```
 
 For help with command line options, run:
 
 ```bash
-shrinkly --help
+shaveurl --help
 ```
 
 ## Custom Shortlink
@@ -113,8 +113,8 @@ shortenUrl(longUrl, "isgd", customShort).then(shortUrl => console.log(shortUrl))
 
 ## Contribution
 
-Feel free to contribute to the [Shrinkly GitHub repository](https://github.com/eqaderi/shrinkly).
+Feel free to contribute to the [shaveurl GitHub repository](https://github.com/eqaderi/shaveurl).
 
 ## License
 
-Shrinkly is licensed under the MIT License - see the [LICENSE](https://github.com/eqaderi/shrinkly/blob/main/LICENSE) file for details.
+shaveurl is licensed under the MIT License - see the [LICENSE](https://github.com/eqaderi/shaveurl/blob/main/LICENSE) file for details.
