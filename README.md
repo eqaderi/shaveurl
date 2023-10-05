@@ -6,6 +6,15 @@
 
 shaveurl is an npm package that provides easy integration with four URL shortener services that don't require API access tokens. You can easily shorten URLs using CleanUri, IsGd, 1pt, or shrtcode. Additionally, shaveurl comes with a command-line interface, enabling users to shorten URLs directly from the command line.
 
+### Quick try
+
+You can use shaveurl directly from the command line using npx:
+
+```bash
+npx shaveurl 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes'
+```
+
+
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
