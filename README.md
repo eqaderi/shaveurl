@@ -58,23 +58,23 @@ pnpm install shaveurl
 
 ### Library Usage
 
-Import the \`shortenUrl\` function from the package and specify one of the four shortening services: `cleanuri`, `isgd`, `1pt`, or `shrtcode`. If no service is specified, the default service is `isgd`.
+Import the \`shaveUrl\` function from the package and specify one of the four shortening services: `cleanuri`, `isgd`, `1pt`, or `shrtcode`. If no service is specified, the default service is `isgd`.
 
 #### Example
 
 ```typescript
-import { shortenUrl } from 'shaveurl';
+import { shaveUrl } from 'shaveurl';
 
 const longUrl = "https://en.wikipedia.org/wiki/List_of_HTTP_status_codes";
-shortenUrl(longUrl).then(shortUrl => console.log(shortUrl));
+shaveUrl(longUrl).then(shortUrl => console.log(shortUrl));
 ```
 
 with custom service:
 
 ```typescript
-import { shortenUrl } from 'shaveurl';
+import { shaveUrl } from 'shaveurl';
 const longUrl = "https://en.wikipedia.org/wiki/List_of_HTTP_status_codes";
-shortenUrl(longUrl, "cleanuri").then(shortUrl => console.log(shortUrl));
+shaveUrl(longUrl, "cleanuri").then(shortUrl => console.log(shortUrl));
 ```
 
 ### Command Line Usage
@@ -117,7 +117,7 @@ Specify a custom shortlink with isgd or 1pt:
 const customShort = 'myshrinklink';
 const url = 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes';
 
-shortenUrl(longUrl, "isgd", customShort).then(shortUrl => console.log(shortUrl));
+shaveUrl(longUrl, "isgd", customShort).then(shortUrl => console.log(shortUrl));
 ```
 
 ## Contribution
